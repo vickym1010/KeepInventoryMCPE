@@ -33,4 +33,10 @@ class Main extends PluginBase implements Listener{
   
   public function PlayerRespawn(PlayerRespawnEvent $event){
     $player = $event->getPlayer();
-    
+   if (isset($this->drops[$player->getName()])){
+     $player->getInventory()->setContents($this->Drops[$player->getName()][0]);
+     $player->getInventory()->setArmorContents($this->Drops[$player->getName()][1]);
+     unset($this->drops[$player->getName()]);
+     }
+    }
+  }
